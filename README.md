@@ -1,4 +1,4 @@
-# admin
+# vue3-element-plus-admin-template
 See [webapi](https://github.com/delgo/dotnet5-webapi).
 
 ## Project setup
