@@ -1,4 +1,4 @@
-# admin
+# vue3-element-plus-admin-template
 See [webapi](https://github.com/delgo/dotnet5-webapi).
 
 ## Project setup
@@ -23,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Thanks
+ [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin).
