@@ -70,7 +70,7 @@ export const asyncRoutes = [
     children: [
       {
         meta: {
-          icon: "lock",
+          icon: "user",
           title: "角色管理",
         },
         name: "role",
@@ -79,7 +79,7 @@ export const asyncRoutes = [
       },
       {
         meta: {
-          icon: "lock",
+          icon: "peoples",
           title: "帐户管理",
         },
         name: "account",
