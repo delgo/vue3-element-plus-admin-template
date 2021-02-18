@@ -1,6 +1,3 @@
-export const isValidUsername = (str: string): boolean =>
-  ["admin", "editor"].indexOf(str.trim()) >= 0;
-
 export const isExternal = (path: string): boolean =>
   /^(https?:|mailto:|tel:)/.test(path);
 // eslint-disable-next-line
