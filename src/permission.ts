@@ -83,7 +83,7 @@ function filterDynamicRoutesHasAuth(
   // 假设不在，在则返回true
   let res = false;
   // eslint-disable-next-line
-  routes.filter((r: any) => {
+  routes.some((r: any) => {
     const rArray = to.split("/");
     if (r.children && r.children.length) {
       res = filterDynamicRoutesHasAuth(to, r.children);
@@ -105,7 +105,7 @@ function filterDynamicRoutesHasPage(to: string, routes: any[]): boolean {
   }
   let res = false;
   // eslint-disable-next-line
-  routes.filter((r: any) => {
+  routes.some((r: any) => {
     const rArray = to.split("/");
     if (r.children && r.children.length) {
       res = filterDynamicRoutesHasPage(to, r.children);

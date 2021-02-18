@@ -75,7 +75,6 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted, watch } from "vue";
 import { useRoute, useRouter, stringifyQuery } from "vue-router";
-//import { isValidUsername } from "@/utils/validate";
 import { useStore } from "vuex";
 
 export default defineComponent({
