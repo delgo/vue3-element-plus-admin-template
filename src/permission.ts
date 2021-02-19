@@ -33,7 +33,7 @@ router.beforeEach(async (to) => {
         try {
           const { asyncRoutes } = await store.dispatch("user/GetUserInfo");
           store.dispatch("permission/GenerateRoutes", asyncRoutes);
-          router.push({ path: to.path, replace: true });
+          router.push({ path: to.path, query: to.query, replace: true });
         } catch (err) {
           console.log("cleartoken", err);
           // 清除token返回登陆页面
