@@ -41,7 +41,7 @@ export default defineComponent({
       return store.getters.sidebar;
     });
     const routes = computed(() => {
-      return store.getters.routes;
+      return store.getters.dynamicRoutes;
     });
     const variablesTheme = computed(() => {
       return variables;

@@ -9,7 +9,7 @@ const getters = {
   name:(state:any)=>{return state.user.name},
   introduction:(state:any)=>{return state.user.introduction},
   roleKey:(state:any)=>{return state.user.roleKey},
-  permissionRoutes:(state:any)=>{return state.permission.dynamicRoutes},
+  dynamicRoutes:(state:any)=>{return state.permission.dynamicRoutes},
   routes:(state:any)=>{return state.permission.routes}
 }
 export default getters
