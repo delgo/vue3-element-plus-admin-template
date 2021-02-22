@@ -101,8 +101,8 @@ export default defineComponent({
     const loginFormRef = ref();
 
     const loginForm = reactive({
-      username: "",
-      password: "",
+      username: "hxl",
+      password: "hxl3221505",
     });
 
     const loading = ref(false);

@@ -106,10 +106,17 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, ref, reactive, nextTick } from "vue";
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  reactive,
+  nextTick,
+  inject,
+} from "vue";
 import { getRolesList, AddRole, deleteRole, updateRole } from "@/api/roles";
 import { parseTime as utilparseTime } from "@/utils/index";
-import { ElMessage, ElMessageBox } from "element-plus";
+
 import { RouteRecordRaw } from "vue-router";
 import { asyncRoutes } from "@/router";
 interface role {
@@ -202,7 +209,8 @@ export default defineComponent({
         if (valid) {
           const checkRoutes = tree.value.getCheckedNodes(false, true);
           if (checkRoutes.length === 0) {
-            ElMessage.error("请最少选择一个菜单!");
+            // eslint-disable-next-line
+            (inject("$message") as any).error("请最少选择一个菜单!");
             confirmLoading.value = false;
             return;
           }
@@ -220,7 +228,8 @@ export default defineComponent({
             }
 
             dialogVisible.value = false;
-            ElMessage.success({
+            // eslint-disable-next-line
+            (inject("$message") as any).success({
               message: dialogType.value === "add" ? "添加成功" : "更新成功",
               type: "success",
             });
@@ -246,20 +255,24 @@ export default defineComponent({
     };
     // eslint-disable-next-line
     const handleDelete = async ({ $index, row }: any) => {
-      ElMessageBox.confirm("是否删除此角色?", "警告", {
-        confirmButtonText: "确认",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
+      // eslint-disable-next-line
+      (inject("$messageBox") as any)
+        .confirm("是否删除此角色?", "警告", {
+          confirmButtonText: "确认",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
         .then(async () => {
           await deleteRole(row.id);
           rolesList.list.splice($index, 1);
-          ElMessage.success({
+          // eslint-disable-next-line
+          (inject("$message") as any).success({
             message: "删除成功",
             type: "success",
           });
         })
-        .catch((err) => {
+        // eslint-disable-next-line
+        .catch((err: any) => {
           console.error(err);
         });
     };

@@ -222,11 +222,10 @@ interface user {
   createTime?: number;
   updateTime?: number;
 }
-import { defineComponent, onMounted, reactive, ref } from "vue";
+import { defineComponent, onMounted, reactive, ref, inject } from "vue";
 import { getUsersList, addUser, updateUser, deleteUser } from "@/api/users";
 import { getRolesList } from "@/api/roles";
 import { parseTime as utilparseTime } from "@/utils/index";
-import { ElMessage, ElMessageBox } from "element-plus";
 import Pagination from "@/components/Pagination/index.vue";
 
 export default defineComponent({
@@ -366,7 +365,8 @@ export default defineComponent({
               await updateUser(user.value, user.value.password);
             }
             dialogVisible.value = false;
-            ElMessage.success({
+            // eslint-disable-next-line
+            (inject("$message") as any).success({
               message: dialogType.value === "add" ? "添加成功" : "更新成功",
               type: "success",
             });
@@ -382,7 +382,8 @@ export default defineComponent({
     const changeSwitch = async (row: any) => {
       try {
         await updateUser(row, row.password);
-        ElMessage.success({
+        // eslint-disable-next-line
+        (inject("$message") as any).success({
           message: "更改成功",
           type: "success",
         });
@@ -398,20 +399,24 @@ export default defineComponent({
     };
     // eslint-disable-next-line
     const handleDelete = async ({ $index, row }: any) => {
-      ElMessageBox.confirm("是否删除此帐户?", "警告", {
-        confirmButtonText: "确认",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
+      // eslint-disable-next-line
+      (inject("$messageBox") as any)
+        .confirm("是否删除此帐户?", "警告", {
+          confirmButtonText: "确认",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
         .then(async () => {
           await deleteUser(row.id);
           accountList.list.splice($index, 1);
-          ElMessage.success({
+          // eslint-disable-next-line
+          (inject("$message") as any).success({
             message: "删除成功",
             type: "success",
           });
         })
-        .catch((err) => {
+        // eslint-disable-next-line
+        .catch((err: any) => {
           console.error(err);
         });
     };
