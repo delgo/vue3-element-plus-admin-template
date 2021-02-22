@@ -231,6 +231,10 @@ import Pagination from "@/components/Pagination/index.vue";
 export default defineComponent({
   components: { Pagination },
   setup() {
+    // eslint-disable-next-line
+    const message = inject("$message") as any;
+    // eslint-disable-next-line
+    const messageBox = inject("$messageBox") as any;
     const accountList: { list: user[] } = reactive({ list: [] });
     const loading = ref(true);
     const rolesList = ref();
@@ -365,8 +369,7 @@ export default defineComponent({
               await updateUser(user.value, user.value.password);
             }
             dialogVisible.value = false;
-            // eslint-disable-next-line
-            (inject("$message") as any).success({
+            message.success({
               message: dialogType.value === "add" ? "添加成功" : "更新成功",
               type: "success",
             });
@@ -382,8 +385,7 @@ export default defineComponent({
     const changeSwitch = async (row: any) => {
       try {
         await updateUser(row, row.password);
-        // eslint-disable-next-line
-        (inject("$message") as any).success({
+        message.success({
           message: "更改成功",
           type: "success",
         });
@@ -399,8 +401,7 @@ export default defineComponent({
     };
     // eslint-disable-next-line
     const handleDelete = async ({ $index, row }: any) => {
-      // eslint-disable-next-line
-      (inject("$messageBox") as any)
+      messageBox
         .confirm("是否删除此帐户?", "警告", {
           confirmButtonText: "确认",
           cancelButtonText: "取消",
@@ -409,8 +410,7 @@ export default defineComponent({
         .then(async () => {
           await deleteUser(row.id);
           accountList.list.splice($index, 1);
-          // eslint-disable-next-line
-          (inject("$message") as any).success({
+          message.success({
             message: "删除成功",
             type: "success",
           });

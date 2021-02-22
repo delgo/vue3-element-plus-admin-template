@@ -132,6 +132,10 @@ interface role {
 export default defineComponent({
   name: "role",
   setup() {
+    // eslint-disable-next-line
+    const message = inject("$message") as any;
+    // eslint-disable-next-line
+    const messageBox = inject("$messageBox") as any;
     const rolesList: { list: role[] } = reactive({ list: [] });
     // eslint-disable-next-line
     const baseAsyncRoutes: { value: any[] } = reactive({ value: asyncRoutes });
@@ -209,8 +213,7 @@ export default defineComponent({
         if (valid) {
           const checkRoutes = tree.value.getCheckedNodes(false, true);
           if (checkRoutes.length === 0) {
-            // eslint-disable-next-line
-            (inject("$message") as any).error("请最少选择一个菜单!");
+            message.error("请最少选择一个菜单!");
             confirmLoading.value = false;
             return;
           }
@@ -228,8 +231,7 @@ export default defineComponent({
             }
 
             dialogVisible.value = false;
-            // eslint-disable-next-line
-            (inject("$message") as any).success({
+            message.success({
               message: dialogType.value === "add" ? "添加成功" : "更新成功",
               type: "success",
             });
@@ -255,8 +257,7 @@ export default defineComponent({
     };
     // eslint-disable-next-line
     const handleDelete = async ({ $index, row }: any) => {
-      // eslint-disable-next-line
-      (inject("$messageBox") as any)
+      messageBox
         .confirm("是否删除此角色?", "警告", {
           confirmButtonText: "确认",
           cancelButtonText: "取消",
@@ -265,8 +266,7 @@ export default defineComponent({
         .then(async () => {
           await deleteRole(row.id);
           rolesList.list.splice($index, 1);
-          // eslint-disable-next-line
-          (inject("$message") as any).success({
+          message.success({
             message: "删除成功",
             type: "success",
           });

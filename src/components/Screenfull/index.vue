@@ -9,14 +9,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
+import { defineComponent, onBeforeUnmount, onMounted, ref, inject } from "vue";
 import screenfull from "screenfull";
-import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "Screenfull",
   setup() {
     const sf = screenfull;
     const isFullscreen = ref(false);
+    // eslint-disable-next-line
+    const message = (inject("$message") as any)
 
     const change = () => {
       if (sf.isEnabled) {
@@ -37,7 +38,7 @@ export default defineComponent({
 
     const click = () => {
       if (!sf.isEnabled) {
-        ElMessage({
+        message({
           message: "you browser can not work",
           type: "warning",
           duration: 5 * 1000,
