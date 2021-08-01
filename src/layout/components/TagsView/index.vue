@@ -12,7 +12,7 @@
           @click.middle.enter="!isAffix(tag) ? closeSelectedTag(tag) : ''"
           @contextmenu.prevent.enter="openMenu(tag, $event)"
         >
-          {{ tag.meta.title }}
+          {{ tag.title || tag.meta.title }}
           <span
             v-if="!isAffix(tag)"
             class="el-icon-close"
