@@ -14,6 +14,8 @@ declare module '*.gif' {
   export const gif: any
 }
 
+declare module 'path'
+
 declare module 'nprogress'
 
 declare module 'js-cookie'
@@ -21,3 +23,5 @@ declare module 'js-cookie'
 declare module 'path-to-regexp'
 
 declare module 'screenfull'
+
+declare module 'ali-oss'
