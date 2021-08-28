@@ -10,7 +10,7 @@ import "default-passive-events"; //Chrome 事件捕获机制－Passive Event Lis
 
 import "@/permission"; //permission control
 
-import "@/styles/element-variables.scss";
+//import "@/styles/element-variables.scss";
 
 import "@/styles/index.scss";
 import SvgIcon from "@/components/SvgIcon/index.vue";

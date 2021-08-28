@@ -20,3 +20,10 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+::v-deep .el-input-number__increase,
+::v-deep .el-input-number__decrease {
+  top: 2px;
+}
+</style>
+>
