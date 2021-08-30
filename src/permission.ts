@@ -17,6 +17,11 @@ const getPageTitle = (key: string) => {
 const state = store.state as any;
 
 router.beforeEach(async (to) => {
+  //防刷新丢失params
+  const routeParams = JSON.stringify(to.params);
+  if (routeParams !== "{}")
+    window.localStorage.setItem("routerParams", routeParams);
+
   // Start progress bar
   NProgress.start();
   const hasToken = store.getters.token;
