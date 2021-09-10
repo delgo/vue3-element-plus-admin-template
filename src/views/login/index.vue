@@ -182,6 +182,7 @@ export default defineComponent({
       showPwd,
       password,
       checkCapslock,
+      username,
     };
   },
 });
