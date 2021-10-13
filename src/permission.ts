@@ -43,7 +43,8 @@ router.beforeEach(async (to) => {
           console.log("cleartoken", err);
           // 清除token返回登陆页面
           store.dispatch("user/ResetToken");
-          ElMessage.error(err || "Has Error");
+          // eslint-disable-next-line
+          ElMessage.error((err as any) || "Has Error");
           router.push(`/login?redirect=${to.path}`);
           NProgress.done();
         }
@@ -77,7 +78,7 @@ router.afterEach((to) => {
   // set page title
   document.title = getPageTitle(to.meta.title);
 });
-
+//判断是否有权限
 function filterDynamicRoutesHasAuth(
   to: string,
   routes: RouteRecordRaw[]
@@ -90,12 +91,13 @@ function filterDynamicRoutesHasAuth(
   // eslint-disable-next-line
   routes.some((r: any) => {
     const rArray = to.split("/");
-    if (r.children && r.children.length) {
+    if (r.path === "/" + rArray[1] && r.children && r.children.length) {
       res = filterDynamicRoutesHasAuth(to, r.children);
       if (res) {
         return res;
       }
     }
+
     if (r.path.includes(rArray[rArray.length - 1])) {
       res = true;
       return;
