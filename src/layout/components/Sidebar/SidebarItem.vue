@@ -15,7 +15,7 @@
       >
         <el-menu-item
           :index="resolvePath(theOnlyOneChild.path)"
-          :class="{ 'submenu-title-noDropdown': isFirstLevel }"
+          :class="{ 'sub-menu-title-noDropdown': isFirstLevel }"
         >
           <svg-icon
             v-if="theOnlyOneChild.meta.icon"
@@ -29,7 +29,7 @@
         </el-menu-item>
       </sidebar-item-link>
     </template>
-    <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
+    <el-sub-menu v-else :index="resolvePath(item.path)" popper-append-to-body>
       <template #title>
         <svg-icon
           v-if="item.meta && item.meta.icon"
@@ -48,7 +48,7 @@
           class="nest-menu"
         />
       </template>
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
@@ -139,15 +139,15 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-.simple-mode.first-level .submenu-title-noDropdown div {
+.simple-mode.first-level .sub-menu-title-noDropdown div {
   padding: 0 !important; //奇怪的问题
 }
-.el-submenu.is-active > .el-submenu__title {
+.el-sub-menu.is-active > .el-sub-menu__title {
   color: $subMenuActiveText !important;
 }
 .full-mode {
-  .nest-menu .el-submenu > .el-submenu__title,
-  .el-submenu .el-menu-item {
+  .nest-menu .el-sub-menu > .el-sub-menu__title,
+  .el-sub-menu .el-menu-item {
     min-width: $sideBarWidth !important;
     background-color: $subMenuBg !important;
     &:hover {
@@ -157,18 +157,18 @@ export default defineComponent({
 }
 .simple-mode {
   &.first-level {
-    .submenu-title-noDropdown {
+    .sub-menu-title-noDropdown {
       padding: 0 !important;
       position: relative;
       .el-tooltip {
         padding: 0 !important;
       }
     }
-    .el-submenu {
+    .el-sub-menu {
       overflow: hidden;
-      & > .el-submenu__title {
+      & > .el-sub-menu__title {
         padding: 0px !important;
-        .el-submenu__icon-arrow {
+        .el-sub-menu__icon-arrow {
           display: none;
         }
         & > span {
