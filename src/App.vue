@@ -5,25 +5,28 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import { ElConfigProvider } from "element-plus";
-
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
-export default {
-  name: "App",
+
+export default defineComponent({
   components: {
-    [ElConfigProvider.name]: ElConfigProvider,
+    ElConfigProvider,
   },
-  data() {
+  setup() {
     return {
       locale: zhCn,
     };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 ::v-deep .el-input-number__increase,
 ::v-deep .el-input-number__decrease {
   top: 2px;
 }
+::v-deep .btn-next .el-icon-arrow-right,
+::v-deep .btn-prev .el-icon-arrow-left {
+  margin: 0 auto;
+}
 </style>
->
