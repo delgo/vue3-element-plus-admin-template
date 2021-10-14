@@ -3,15 +3,12 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import ElementPlus from "element-plus";
-
-import "element-plus/lib/theme-chalk/index.css";
-
+import "element-plus/dist/index.css";
 import "default-passive-events"; //Chrome 事件捕获机制－Passive Event Listeners
 
 import "@/permission"; //permission control
 
 //import "@/styles/element-variables.scss";
-
 import "@/styles/index.scss";
 import SvgIcon from "@/components/SvgIcon/index.vue";
 import "@/icons"; //icons
@@ -25,7 +22,8 @@ app.provide("$message", ElMessage);
 app.provide("$messageBox", ElMessageBox);
 
 app.component("svg-icon", SvgIcon);
+app.use(ElementPlus);
 app.use(store);
 app.use(router);
-app.use(ElementPlus);
+
 app.mount("#app");
