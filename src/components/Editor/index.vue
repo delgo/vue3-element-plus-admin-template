@@ -145,11 +145,13 @@ export default defineComponent({
         const isLt2M = file.size / 1024 / 1024 < 2;
 
         if (!isJPG) {
-          message.error("上传头像图片只能是 JPG 或 PNG 格式!");
+          message.error("上传图片只能是 JPG 或 PNG 格式!");
+          failure("上传图片只能是 JPG 或 PNG 格式!");
           return;
         }
         if (!isLt2M) {
-          message.error("上传头像图片大小不能超过 2MB!");
+          message.error("上传图片大小不能超过 2MB!");
+          failure("上传图片大小不能超过 2MB!");
           return;
         }
 
@@ -160,7 +162,9 @@ export default defineComponent({
         let token = null;
         try {
           token = JSON.parse(getTokenResponse.data);
-        } catch (e) {
+          // eslint-disable-next-line
+        } catch (e: any) {
+          failure("parse sts response info error: " + e.message);
           return message.error("parse sts response info error: " + e.message);
         }
 
