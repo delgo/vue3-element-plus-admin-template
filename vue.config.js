@@ -48,4 +48,15 @@ module.exports = {
       })
       .end();
   },
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          include: /node_modules/,
+          test: /\.mjs$/,
+          type: "javascript/auto",
+        },
+      ],
+    },
+  },
 };

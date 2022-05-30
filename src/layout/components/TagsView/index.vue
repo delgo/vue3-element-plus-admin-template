@@ -13,7 +13,7 @@
           @contextmenu.prevent.enter="openMenu(tag, $event)"
         >
           {{ tag.title || tag.meta.title }}
-          <span
+          <Close
             v-if="!isAffix(tag)"
             class="el-icon-close"
             @click.prevent.stop="closeSelectedTag(tag)"
@@ -286,9 +286,9 @@ export default defineComponent({
 .tags-view-wrapper {
   .tags-view-item {
     .el-icon-close {
-      width: 16px;
-      height: 16px;
-      vertical-align: 2px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       text-align: center;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);

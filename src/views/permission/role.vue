@@ -90,6 +90,7 @@
             :props="defaultProps"
             show-checkbox
             node-key="name"
+            style="width: 100%"
           />
         </el-form-item>
       </el-form>

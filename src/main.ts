@@ -12,12 +12,16 @@ import "@/permission"; //permission control
 import "@/styles/index.scss";
 import SvgIcon from "@/components/SvgIcon/index.vue";
 import "@/icons"; //icons
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 import { ElMessage } from "element-plus";
 import { ElMessageBox } from "element-plus";
 
 const app = createApp(App);
 
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component);
+}
 app.provide("$message", ElMessage);
 app.provide("$messageBox", ElMessageBox);
 
@@ -25,5 +29,4 @@ app.component("svg-icon", SvgIcon);
 app.use(ElementPlus);
 app.use(store);
 app.use(router);
-
 app.mount("#app");

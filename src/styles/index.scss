@@ -154,3 +154,7 @@ aside {
 .no-padding {
   padding: 0px !important;
 }
+//2.2.2版本element-plus如果不这么做，margin-right是30px
+.el-tree-node__content>span.el-checkbox {
+  margin-right: 8px;
+}

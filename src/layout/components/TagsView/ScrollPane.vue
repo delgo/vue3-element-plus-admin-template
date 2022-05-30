@@ -33,7 +33,7 @@ export default defineComponent({
     let tags = ref() as any;
     onMounted(() => {
       tags = inject("ParentTag");
-      const scrollWrapper = unref(scrollContainer).wrap as HTMLElement;
+      const scrollWrapper = unref(scrollContainer).wrap$ as HTMLElement;
       scrollWrapper.addEventListener("scroll", emitScroll, { passive: true });
     });
     onUnmounted(() => {

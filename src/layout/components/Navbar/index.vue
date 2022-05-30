@@ -22,7 +22,9 @@
       >
         <div class="avatar-wrapper">
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
-          <i class="el-icon-caret-bottom" />
+          <el-icon :size="15">
+            <CaretBottom />
+          </el-icon>
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -141,21 +143,23 @@ export default defineComponent({
     }
     .avatar-container {
       margin-right: 30px;
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-        .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+      .el-tooltip__trigger {
+        .avatar-wrapper {
+          margin-top: 5px;
+          position: relative;
+          .user-avatar {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+          .el-icon-caret-bottom {
+            cursor: pointer;
+            position: absolute;
+            right: -20px;
+            top: 25px;
+            font-size: 12px;
+          }
         }
       }
     }

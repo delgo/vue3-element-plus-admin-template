@@ -178,6 +178,10 @@ export default defineComponent({
     }
   }
 }
+.el-sub-menu > .el-sub-menu__title {
+  //2.2.2 element-plus 默认为flex
+  display: inherit;
+}
 </style>
 
 <style lang="scss" scoped>

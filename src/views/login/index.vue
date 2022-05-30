@@ -25,6 +25,7 @@
             type="text"
             tabindex="1"
             autocomplete="on"
+            autosize
           />
         </el-form-item>
 
@@ -62,7 +63,7 @@
         <el-button
           :loading="loading"
           type="primary"
-          style="width: 100%; margin-bottom: 30px"
+          style="width: 100%; margin-bottom: 30px; padding: 20px 0"
           @click="handleLogin()"
         >
           登录
@@ -205,12 +206,16 @@ export default defineComponent({
     padding: 30px 40px;
     border-radius: 15px;
   }
+  .el-form-item__error {
+    margin-top: 5px;
+  }
   .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
-    input {
+    .el-input__wrapper {
       height: 47px;
+      width: 100%;
       background: transparent;
       border: 0px;
       border-radius: 0px;
@@ -218,6 +223,7 @@ export default defineComponent({
       color: #c2ccd0;
       caret-color: $loginCursorColor;
       -webkit-appearance: none;
+      box-shadow: 0 0 0 0px;
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px white inset !important;
         -webkit-text-fill-color: #fff !important;
@@ -229,6 +235,7 @@ export default defineComponent({
     background: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     color: #454545;
+    margin-bottom: 25px;
   }
 }
 </style>
